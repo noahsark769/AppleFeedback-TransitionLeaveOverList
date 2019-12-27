@@ -2,6 +2,8 @@
 Feedback for an issue where asymmetric transitions to not happen when a view is in a ZStack with a List.
 
 ## A SwiftUI view in a ZStack over a List does not apply transition on remove
+When a view is in a ZStack over a List, it transitions in correctly, but transitions out without animation. After transitioning out, subsequent transitions in can become incorrect.
+
 Steps to reproduce:
 
 1. Clone the repo at https://github.com/noahsark769/AppleFeedback-TransitionLeaveOverList
