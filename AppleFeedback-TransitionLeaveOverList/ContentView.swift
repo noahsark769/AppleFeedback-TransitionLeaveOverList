@@ -9,13 +9,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
-    }
-}
+    @State var isShowingCover: Bool = false
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    var body: some View {
+        ZStack {
+            List(["a", "b", "c"], id: \.self) { item in
+                Text("")
+            }
+            if self.isShowingCover {
+                Color.red
+                .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .leading)))
+                .animation(.easeInOut(duration: 2))
+            }
+            Button(action: {
+                self.isShowingCover.toggle()
+            }) {
+                Text("Toggle")
+                    .padding(20)
+                    .foregroundColor(Color(UIColor.label))
+                    .background(RoundedRectangle(cornerRadius: 6).fill(Color.blue))
+            }
+        }
     }
 }
